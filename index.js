@@ -1,13 +1,13 @@
 const app = require('./app');
-const db = require('./config/db')
-const UserModel = require('./model/user_model')
+require('./config/db');
 
 const port = 3000;
 
-app.get('/',(req,res)=>{
-    res.send("Hello World1")
+app.get('/', (req, res) => {
+  res.send("Hello World");
 });
 
-app.listen(port,()=>{
-    console.log(`Server Listening on port http://localhost:${port}`);
+// Listen on all interfaces so your phone can reach it
+app.listen(port, '0.0.0.0', () => {
+  console.log(`Server listening on port ${port}`);
 });

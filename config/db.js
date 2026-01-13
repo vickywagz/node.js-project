@@ -1,11 +1,7 @@
 const mongoose = require('mongoose');
 
+mongoose.connect('mongodb://127.0.0.1:27017/newTodo')
+    .then(() => console.log("Mongoose Connected"))
+    .catch((err) => console.log("Mongoose connection error:", err));
 
-const connection = mongoose.createConnection('mongodb://localhost:27017/newTodo').on('open', () =>{
-    console.log("Mongoose Connected");
-}).on('error',()=> {
-    console.log("Mongoose connection error");
-})
-
-
-module.exports = connection;
+module.exports = mongoose;
