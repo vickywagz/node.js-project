@@ -1,16 +1,24 @@
 const db = require('../config/db');
 const mongoose = require('mongoose');
+const UserModel = require('../model/user_model');
 const { Schema } = mongoose;
 
 const todoSchema = new Schema({
-    email: {
-        type: String,
-        lowercase: true,
-        required: true,
-        unique: true,
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref:UserModel.modelName
     },
-    password: {
+    title: {
+        type: String,
+        required: true
+        
+    },
+    desc: {
         type: String,
         required: true
     }
 });
+
+const TodoModel = mongoose.model('todo', todoSchema);
+
+module.exports = TodoModel;
